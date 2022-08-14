@@ -14,5 +14,6 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-// clang++ -O2  example2.cpp -o example2 && ./example2
-// g++ -O2  example2.cpp -o example2 && ./example2
+// clang++ -O2 example4.cpp -o example4 && ./example4
+// g++ -O2  example4.cpp -o example4 && ./example4
+// clang++ -O2 -fsanitize=undefined example4.cpp -o example4 && ./example4
