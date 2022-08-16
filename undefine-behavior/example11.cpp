@@ -5,7 +5,8 @@ void f(int *a, float *b)
     *a = 123;
     *b = 1.23;
     printf("%d %f\n", *a, *b);
-    // 对于不相似的类型，编译器优化的时候会做假设，不会当成一个地址，激进优化
+    // 对于不相似的类型，编译器优化的时候会做假设，两个变量不会是一个地址，激进优化
+    // -fno-strict-aliasing 能阻止编译器激进优化
 }
 
 void g(int *a, unsigned int *b)
@@ -36,8 +37,8 @@ void f(int *a, float *b, char *p, char *q)
 int main(int argc, char const *argv[])
 {
     int a;
-    // f(&a, (float *)&a);
-    f(&a, (float *)&a, (char *)&a, (char *)&a);
+    f(&a, (float *)&a);
+    // f(&a, (float *)&a, (char *)&a, (char *)&a);
     // g(&a, (unsigned int *)&a);
     // h(&a, (char *)&a);
     return 0;
@@ -46,3 +47,4 @@ int main(int argc, char const *argv[])
 // clang++ -O2 example11.cpp -o example11 && ./example11
 // g++ -O2 example11.cpp -o example11 && ./example11
 // clang++ -O2 -fsanitize=undefined example11.cpp -o example11 && ./example11
+// -fno-strict-aliasing 能阻止
