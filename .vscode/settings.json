@@ -90,6 +90,9 @@
         "typeindex": "cpp",
         "unordered_set": "cpp",
         "variant": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "charconv": "cpp",
+        "list": "cpp",
+        "ranges": "cpp"
     }
 }

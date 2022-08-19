@@ -13,14 +13,23 @@ void test1()
     std::cout << (x ? a : b) << std::endl;
 }
 
-void test2(){
-    
+void test2()
+{
+    // 没有未定义行为
+    int a;
+    float *b = (float *)&a;
+    *b = 1.23;
+    std::cout << *b * *b << std::endl;
+    a = 456;
+    std::cout << a * a << std::endl;
 }
+
+// char main[] = {0xe, 0xf};
 
 int main(int argc, char const *argv[])
 {
     /* code */
-
+    test2();
     return 0;
 }
 
